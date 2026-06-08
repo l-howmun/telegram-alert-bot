@@ -32,9 +32,9 @@ SEVERITY_EMOJI = {"info": "ℹ️", "warning": "⚠️", "critical": "🚨"}
 def format_telegram_message(alert: Alert) -> str:
     emoji = SEVERITY_EMOJI.get(alert.severity, "ℹ️")
     return (
-        f"{emoji} *{alert.title}*\n\n"
+        f"{emoji} {alert.title}\n\n"
         f"{alert.message}\n\n"
-        f"`{alert.timestamp}`"
+        f"{alert.timestamp}"
     )
 
 
@@ -44,7 +44,6 @@ def send_telegram(bot_token: str, chat_id: str, alert: Alert) -> bool:
     payload = {
         "chat_id": chat_id,
         "text": format_telegram_message(alert),
-        "parse_mode": "Markdown",
     }
     try:
         r = httpx.post(url, json=payload, timeout=10)
