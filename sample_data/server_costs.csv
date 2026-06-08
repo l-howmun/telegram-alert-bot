@@ -1,0 +1,11 @@
+server_name,monthly_cost,cpu_usage,memory_usage,region
+web-prod-01,120.00,45,62,us-east
+web-prod-02,120.00,88,71,us-east
+api-server-01,250.00,72,55,ap-southeast
+db-primary,580.00,67,82,us-east
+db-replica,320.00,34,45,eu-west
+worker-01,95.00,92,40,us-east
+worker-02,95.00,55,38,us-east
+cdn-node-01,45.00,12,20,ap-southeast
+staging-01,180.00,25,30,us-east
+gpu-ml-01,750.00,95,88,us-east

@@ -1,0 +1,50 @@
+{
+  "bot_token": "YOUR_BOT_TOKEN",
+  "chat_id": "YOUR_CHAT_ID",
+  "monitors": [
+    {
+      "name": "Server Costs",
+      "type": "csv",
+      "path": "sample_data/server_costs.csv",
+      "rules": [
+        {
+          "column": "monthly_cost",
+          "operator": ">",
+          "threshold": 500,
+          "severity": "warning",
+          "title": "High server cost detected",
+          "label_col": "server_name"
+        },
+        {
+          "column": "cpu_usage",
+          "operator": ">",
+          "threshold": 90,
+          "severity": "critical",
+          "title": "CPU usage critical",
+          "label_col": "server_name"
+        }
+      ]
+    },
+    {
+      "name": "Bitcoin Price",
+      "type": "api",
+      "url": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
+      "rules": [
+        {
+          "field": "bitcoin.usd",
+          "operator": ">",
+          "threshold": 100000,
+          "severity": "info",
+          "title": "BTC above $100K"
+        },
+        {
+          "field": "bitcoin.usd",
+          "operator": "<",
+          "threshold": 50000,
+          "severity": "critical",
+          "title": "BTC crashed below $50K"
+        }
+      ]
+    }
+  ]
+}
